@@ -159,6 +159,35 @@
       border-radius: 20px;
       margin: 0 .25rem .35rem 0;
     }
+    
+    /* BOUTON DOWNLOAD */
+    .btn-download {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.6rem 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+    .btn-download:hover {
+      background: var(--accent);
+      color: var(--black);
+    }
+    .btn-download svg {
+      width: 14px;
+      height: 14px;
+    }
+
     .nav-links {
       display: flex;
       flex-direction: column;
@@ -430,6 +459,14 @@
       .hero::before { font-size: 7rem; }
       .footer { padding: 3rem 2rem; }
     }
+
+    /* CONFIGURATION SPECIFIQUE POUR LE PDF */
+    @media print {
+      .scroll-line, .btn-download, .nav-links { display: none !important; }
+      .sidebar { position: absolute; height: auto; width: 100%; padding: 1rem; background: #000; }
+      .main { margin-left: 0; padding-top: 100vh; }
+      .section { opacity: 1 !important; transform: none !important; page-break-inside: avoid; }
+    }
   </style>
 </head>
 <body>
@@ -495,6 +532,12 @@
     <span class="soft-skill-tag">Design Graphique</span>
     <span class="soft-skill-tag">Photographie professionnelle</span>
   </div>
+
+  <!-- BOUTON GENERER PDF -->
+  <button class="btn-download" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Télécharger le CV (PDF)
+  </button>
   
   <nav class="nav-links">
     <a class="nav-link" data-target="hero">Profil</a>
@@ -571,7 +614,7 @@
         </div>
       </div>
       <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-period">Juin 2017 - Avril 2019</div><div class="timeline-role">Technicien spécialiste certifié</div><div class="timeline-company">Apple Store, Nice</div><div class="timeline-desc">Identification et recherche de pannes, proposition de solutions pour optimiser la sécurité et les performances du matériel et logiciel.</div><div class="timeline-tags"><span class="tag">Diagnostics HW/SW</span><span class="tag">Sécurité système</span></div></div>
-      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-period">Novembre 2014 - Juin 2017</div><div class="timeline-role">Commercial</div><div class="timeline-company">Apple Store, Nice</div><div class="timeline-desc">Spécialiste référent B2B/B2C retail, commercialisation et conseil en solutions IT, assurances et recyclage produits.<br>- Optimisation de la conversion des leads ainsi que de la CRM Data Quality.<br>- Assurer la formation des spécialistes juniors.<br>- Accompagnement clients et conseil en services et solutions IT.</div><div class="timeline-tags"><span class="tag">B2B/B2C</span><span class="tag">CRM</span><span class="tag">Formation</span></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-period">Novembre 2014 - Juin 2017</div><div class="timeline-role">Commercial</div><div class="timeline-company">Apple Store, Nice</div><div class="timeline-desc">Spécialiste référent B2B/B2C retail, commercialisation et conseil en solutions IT, assurances et recyclage produits.<br>- Optimisation de la conversion des leads ainsi que de la CRM Data Quality.<br>- Assurer la formation des specialists juniors.<br>- Accompagnement clients et conseil en services et solutions IT.</div><div class="timeline-tags"><span class="tag">B2B/B2C</span><span class="tag">CRM</span><span class="tag">Formation</span></div></div>
       <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-period">Janvier 2010 - Janvier 2020</div><div class="timeline-role">Designer en communication visuelle &amp; Photographe</div><div class="timeline-company">Freelance (en parallèle)</div><div class="timeline-desc">Designer en communication visuelle, photographie professionnelle sportive et événementielle (freelance en parallèle).</div><div class="timeline-tags"><span class="tag">Photoshop</span><span class="tag">Lightroom</span><span class="tag">Événementiel</span></div></div>
     </div>
   </section>
@@ -616,7 +659,7 @@
       <div class="training-card"><div class="training-date">07/2025 – 09/2025</div><div class="training-name">Certification d'État T3P</div><div class="training-detail">Conducteur de Transport Public Particulier de Personnes</div></div>
       <div class="training-card"><div class="training-date">01/2010 – 01/2011</div><div class="training-name">Anglais — Niveau 3/5</div><div class="training-detail">Centre Américain de Langues, Fès (Maroc)</div></div>
       <div class="training-card"><div class="training-date">2008 – 2009</div><div class="training-name">Webmaster / Graphisme</div><div class="training-detail">Communication visuelle — Institut MULTIHEXA</div></div>
-      <div class="training-card"><div class="training-date">2007 – 2008</div><div class="training-name">Informatique Tronc commun</div><div class="training-detail">Institut MULTIHEXA, Oujda (Maroc)</div></div>
+      <div class="training-card"><div class="training-date">2008 – 2009</div><div class="training-name">Informatique Tronc commun</div><div class="training-detail">Institut MULTIHEXA, Oujda (Maroc)</div></div>
       <div class="training-card"><div class="training-date">2005 – 2006</div><div class="training-name">Baccalauréat Technique</div><div class="training-detail">Gestion Comptabilité — Lycée Technique, Oujda (Maroc)</div></div>
     </div>
   </section>
@@ -652,7 +695,10 @@
   window.addEventListener('scroll', function() {
     var scrolled = window.scrollY;
     var total = document.body.scrollHeight - window.innerHeight;
-    document.getElementById('scrollLine').style.width = (scrolled / total * 100) + '%';
+    var sLine = document.getElementById('scrollLine');
+    if (sLine && total > 0) {
+      sLine.style.width = (scrolled / total * 100) + '%';
+    }
   });
 
   // Navigation active synchronisée
@@ -662,13 +708,20 @@
   function updateActiveLink() {
     var scrollPos = window.scrollY + 150; // décalage pour déclencher un peu avant
     var current = '';
-    sections.forEach(function(section) {
-      var top = section.offsetTop;
-      var bottom = top + section.offsetHeight;
-      if (scrollPos >= top && scrollPos < bottom) {
-        current = section.getAttribute('id');
-      }
-    });
+    
+    // Correction pour la fin de page : si on est tout en bas, on force l'activation de "skills"
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 15) {
+      current = 'skills';
+    } else {
+      sections.forEach(function(section) {
+        var top = section.offsetTop;
+        var bottom = top + section.offsetHeight;
+        if (scrollPos >= top && scrollPos < bottom) {
+          current = section.getAttribute('id');
+        }
+      });
+    }
+
     navLinks.forEach(function(link) {
       var target = link.getAttribute('data-target');
       if (target === current) {
