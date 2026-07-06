@@ -186,12 +186,22 @@
       position: relative;
       overflow: hidden;
     }
-    .hero::before {
+ .hero::before {
       content: 'SOFTWARE DEV / QA';
       position: absolute;
-      right: -1rem; top: -2rem;
+      
+      /* 1. On positionne le point de départ au centre exact */
+      left: 50%;
+      top: 50%;
+      
+      /* 2. On décale le texte vers la gauche et vers le haut de la moitié de sa propre taille pour un centrage parfait */
+      transform: translate(-50%, -50%);
+      
+      /* 3. On force le texte à rester sur une seule ligne sans revenir à la ligne */
+      white-space: nowrap;
+
       font-family: 'Playfair Display', serif;
-      font-size: 9rem;
+      font-size: 10rem;
       color: var(--grey-light);
       font-weight: 300;
       z-index: 0;
