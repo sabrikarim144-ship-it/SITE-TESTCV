@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Karim Sabri — Testeur LOgiciel</title>
+  <title>Karim Sabri — Testeur Logiciel</title>
 
   <meta
     name="description"
@@ -13,7 +13,11 @@
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
 
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
@@ -21,6 +25,7 @@
   />
 
   <style>
+
     /* =========================================================
        VARIABLES
     ========================================================= */
@@ -52,6 +57,36 @@
         0 30px 80px rgba(0, 0, 0, 0.35);
     }
 
+
+    /* =========================================================
+       LIGHT MODE VARIABLES
+    ========================================================= */
+
+    body.light-mode {
+      --bg: #f5f3ee;
+      --bg-soft: #ebe8e0;
+      --panel: #ffffff;
+      --panel-hover: #f8f6f1;
+
+      --white: #171717;
+      --text: #3d3d3d;
+      --muted: #707070;
+      --muted-dark: #777777;
+
+      --accent: #a4772e;
+      --accent-light: #c49a52;
+
+      --green: #3b9b68;
+      --blue: #4b7dcc;
+
+      --border: rgba(0, 0, 0, 0.10);
+      --border-accent: rgba(164, 119, 46, 0.35);
+
+      --shadow:
+        0 30px 80px rgba(0, 0, 0, 0.10);
+    }
+
+
     /* =========================================================
        RESET
     ========================================================= */
@@ -64,9 +99,11 @@
       padding: 0;
     }
 
+
     html {
       scroll-behavior: smooth;
     }
+
 
     body {
       background:
@@ -89,21 +126,29 @@
       line-height: 1.7;
 
       overflow-x: hidden;
+
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
     }
+
 
     a {
       color: inherit;
       text-decoration: none;
     }
 
+
     button {
       font: inherit;
     }
+
 
     ::selection {
       background: var(--accent);
       color: var(--bg);
     }
+
 
     /* =========================================================
        SCROLL PROGRESS
@@ -122,6 +167,7 @@
       z-index: 9999;
     }
 
+
     /* =========================================================
        DECORATIVE GRID
     ========================================================= */
@@ -136,12 +182,12 @@
 
       background-image:
         linear-gradient(
-          rgba(255, 255, 255, 0.7) 1px,
+          color-mix(in srgb, var(--white) 70%, transparent) 1px,
           transparent 1px
         ),
         linear-gradient(
           90deg,
-          rgba(255, 255, 255, 0.7) 1px,
+          color-mix(in srgb, var(--white) 70%, transparent) 1px,
           transparent 1px
         );
 
@@ -157,6 +203,7 @@
       z-index: 0;
     }
 
+
     /* =========================================================
        LAYOUT
     ========================================================= */
@@ -171,6 +218,7 @@
 
       padding: 32px;
     }
+
 
     /* =========================================================
        TOP NAV
@@ -192,7 +240,11 @@
 
       border: 1px solid var(--border);
 
-      background: rgba(9, 10, 12, 0.78);
+      background: color-mix(
+        in srgb,
+        var(--bg) 82%,
+        transparent
+      );
 
       backdrop-filter: blur(18px);
 
@@ -200,13 +252,19 @@
 
       box-shadow:
         0 15px 40px rgba(0, 0, 0, 0.18);
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
     }
+
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
     }
+
 
     .brand-mark {
       width: 34px;
@@ -225,6 +283,7 @@
       border-radius: 50%;
     }
 
+
     .brand-name {
       font-family: "DM Mono", monospace;
       font-size: 12px;
@@ -233,14 +292,17 @@
       color: var(--white);
     }
 
+
     .brand-role {
       color: var(--muted);
     }
+
 
     .topnav {
       display: flex;
       gap: 24px;
     }
+
 
     .topnav a {
       font-family: "DM Mono", monospace;
@@ -254,10 +316,68 @@
       transition: color 0.25s ease;
     }
 
+
     .topnav a:hover,
     .topnav a.active {
       color: var(--accent);
     }
+
+
+    /* =========================================================
+       THEME TOGGLE
+    ========================================================= */
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+
+      display: grid;
+      place-items: center;
+
+      flex-shrink: 0;
+
+      border: 1px solid var(--border);
+
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, 0.035);
+
+      color: var(--accent);
+
+      cursor: pointer;
+
+      font-size: 14px;
+
+      line-height: 1;
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease;
+    }
+
+
+    .theme-toggle:hover {
+      transform: rotate(15deg);
+
+      background: rgba(214, 173, 98, 0.08);
+
+      border-color: var(--border-accent);
+
+      color: var(--accent-light);
+    }
+
+
+    body.light-mode .theme-toggle {
+      background: rgba(0, 0, 0, 0.035);
+    }
+
+
+    body.light-mode .theme-toggle:hover {
+      background: rgba(164, 119, 46, 0.08);
+    }
+
 
     /* =========================================================
        HERO
@@ -279,9 +399,11 @@
       padding: 40px 30px 100px;
     }
 
+
     .hero-left {
       max-width: 850px;
     }
+
 
     .eyebrow {
       display: inline-flex;
@@ -301,6 +423,7 @@
       color: var(--accent);
     }
 
+
     .eyebrow::before {
       content: "";
 
@@ -309,6 +432,7 @@
 
       background: var(--accent);
     }
+
 
     .hero h1 {
       font-family: "Playfair Display", serif;
@@ -326,6 +450,7 @@
       margin-bottom: 32px;
     }
 
+
     .hero h1 span {
       display: block;
 
@@ -333,6 +458,7 @@
 
       font-style: italic;
     }
+
 
     .hero-description {
       max-width: 720px;
@@ -346,10 +472,12 @@
       margin-bottom: 38px;
     }
 
+
     .hero-description strong {
       color: var(--white);
       font-weight: 600;
     }
+
 
     .hero-actions {
       display: flex;
@@ -358,6 +486,7 @@
 
       gap: 12px;
     }
+
 
     .button {
       display: inline-flex;
@@ -385,9 +514,11 @@
         border-color 0.25s ease;
     }
 
+
     .button:hover {
       transform: translateY(-2px);
     }
+
 
     .button-primary {
       background: var(--accent);
@@ -397,9 +528,11 @@
       border: 1px solid var(--accent);
     }
 
+
     .button-primary:hover {
       background: var(--accent-light);
     }
+
 
     .button-secondary {
       border: 1px solid var(--border);
@@ -409,10 +542,12 @@
       background: rgba(255, 255, 255, 0.025);
     }
 
+
     .button-secondary:hover {
       border-color: var(--border-accent);
       color: var(--accent);
     }
+
 
     /* =========================================================
        HERO CARD
@@ -437,6 +572,17 @@
       box-shadow: var(--shadow);
     }
 
+
+    body.light-mode .hero-card {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.95),
+          rgba(255, 255, 255, 0.75)
+        );
+    }
+
+
     .hero-card::before {
       content: "";
 
@@ -451,6 +597,7 @@
       background: var(--accent);
     }
 
+
     .profile-photo {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -463,6 +610,7 @@
 
       margin-bottom: 22px;
     }
+
 
     .card-label {
       font-family: "DM Mono", monospace;
@@ -478,6 +626,7 @@
       margin-bottom: 10px;
     }
 
+
     .hero-card h2 {
       font-family: "Playfair Display", serif;
 
@@ -490,11 +639,13 @@
       margin-bottom: 8px;
     }
 
+
     .hero-card p {
       color: var(--muted);
 
       font-size: 13px;
     }
+
 
     /* =========================================================
        QUICK STATS
@@ -511,15 +662,18 @@
       margin-bottom: 110px;
     }
 
+
     .stat {
       padding: 28px 24px;
 
       border-right: 1px solid var(--border);
     }
 
+
     .stat:last-child {
       border-right: none;
     }
+
 
     .stat-number {
       font-family: "Playfair Display", serif;
@@ -530,6 +684,7 @@
 
       margin-bottom: 2px;
     }
+
 
     .stat-label {
       font-family: "DM Mono", monospace;
@@ -543,6 +698,7 @@
       color: var(--muted);
     }
 
+
     /* =========================================================
        SECTION
     ========================================================= */
@@ -550,6 +706,7 @@
     .section {
       padding: 0 30px 120px;
     }
+
 
     .section-header {
       display: grid;
@@ -563,6 +720,7 @@
       margin-bottom: 55px;
     }
 
+
     .section-index {
       font-family: "DM Mono", monospace;
 
@@ -573,11 +731,13 @@
       padding-bottom: 8px;
     }
 
+
     .section-title-wrap {
       border-bottom: 1px solid var(--border);
 
       padding-bottom: 18px;
     }
+
 
     .section-title {
       font-family: "Playfair Display", serif;
@@ -591,6 +751,7 @@
       color: var(--white);
     }
 
+
     .section-subtitle {
       margin-top: 10px;
 
@@ -598,6 +759,7 @@
 
       font-size: 13px;
     }
+
 
     /* =========================================================
        QA PHILOSOPHY
@@ -613,6 +775,7 @@
       margin-bottom: 60px;
     }
 
+
     .qa-intro-card {
       padding: 30px;
 
@@ -622,6 +785,7 @@
 
       border-radius: var(--radius);
     }
+
 
     .qa-intro-card.featured {
       border-color: var(--border-accent);
@@ -634,6 +798,7 @@
         );
     }
 
+
     .qa-icon {
       font-family: "DM Mono", monospace;
 
@@ -643,6 +808,7 @@
 
       margin-bottom: 20px;
     }
+
 
     .qa-intro-card h3 {
       font-family: "Playfair Display", serif;
@@ -656,11 +822,13 @@
       margin-bottom: 12px;
     }
 
+
     .qa-intro-card p {
       color: var(--muted);
 
       font-size: 14px;
     }
+
 
     /* =========================================================
        EXPERIENCE TIMELINE
@@ -669,6 +837,7 @@
     .timeline {
       position: relative;
     }
+
 
     .timeline::before {
       content: "";
@@ -685,6 +854,7 @@
       background: var(--border);
     }
 
+
     .experience {
       position: relative;
 
@@ -697,9 +867,11 @@
       padding-bottom: 65px;
     }
 
+
     .experience:last-child {
       padding-bottom: 0;
     }
+
 
     .experience::before {
       content: "";
@@ -723,6 +895,7 @@
         0 0 0 5px var(--bg);
     }
 
+
     .experience-period {
       font-family: "DM Mono", monospace;
 
@@ -737,9 +910,11 @@
       text-transform: uppercase;
     }
 
+
     .experience-main {
       padding-left: 35px;
     }
+
 
     .experience-top {
       display: flex;
@@ -753,6 +928,7 @@
       margin-bottom: 14px;
     }
 
+
     .experience-role {
       font-family: "Playfair Display", serif;
 
@@ -764,6 +940,7 @@
 
       font-weight: 500;
     }
+
 
     .experience-company {
       font-family: "DM Mono", monospace;
@@ -778,6 +955,7 @@
 
       margin-top: 6px;
     }
+
 
     .experience-badge {
       flex-shrink: 0;
@@ -797,6 +975,7 @@
       text-transform: uppercase;
     }
 
+
     .experience-description {
       max-width: 900px;
 
@@ -807,6 +986,7 @@
       margin-bottom: 20px;
     }
 
+
     .experience-list {
       display: grid;
 
@@ -816,6 +996,7 @@
 
       margin-bottom: 20px;
     }
+
 
     .experience-list li {
       list-style: none;
@@ -829,6 +1010,7 @@
       font-size: 12px;
     }
 
+
     .experience-list li::before {
       content: "→";
 
@@ -839,6 +1021,7 @@
       color: var(--accent);
     }
 
+
     .tags {
       display: flex;
 
@@ -846,6 +1029,7 @@
 
       gap: 7px;
     }
+
 
     .tag {
       padding: 5px 9px;
@@ -865,11 +1049,13 @@
         border-color 0.2s ease;
     }
 
+
     .tag:hover {
       color: var(--accent);
 
       border-color: var(--border-accent);
     }
+
 
     /* =========================================================
        FORMATION
@@ -882,6 +1068,7 @@
 
       gap: 14px;
     }
+
 
     .formation-card {
       position: relative;
@@ -902,6 +1089,7 @@
         background 0.25s ease;
     }
 
+
     .formation-card:hover {
       transform: translateY(-4px);
 
@@ -909,6 +1097,7 @@
 
       background: var(--panel-hover);
     }
+
 
     .formation-card.featured {
       border-color: var(--border-accent);
@@ -920,6 +1109,7 @@
           var(--panel)
         );
     }
+
 
     .formation-date {
       font-family: "DM Mono", monospace;
@@ -933,6 +1123,7 @@
       margin-bottom: 15px;
     }
 
+
     .formation-name {
       color: var(--white);
 
@@ -943,11 +1134,13 @@
       margin-bottom: 8px;
     }
 
+
     .formation-detail {
       color: var(--muted);
 
       font-size: 12px;
     }
+
 
     .istqb-logo {
       position: absolute;
@@ -959,6 +1152,7 @@
 
       opacity: 0.9;
     }
+
 
     /* =========================================================
        SKILLS
@@ -972,6 +1166,7 @@
       gap: 20px;
     }
 
+
     .skill-category {
       padding: 30px;
 
@@ -981,6 +1176,7 @@
 
       border-radius: var(--radius);
     }
+
 
     .skill-category-title {
       font-family: "DM Mono", monospace;
@@ -996,6 +1192,7 @@
       margin-bottom: 22px;
     }
 
+
     .skill-items {
       display: flex;
 
@@ -1003,6 +1200,7 @@
 
       gap: 8px;
     }
+
 
     .skill {
       padding: 8px 12px;
@@ -1018,11 +1216,18 @@
       font-size: 12px;
     }
 
+
+    body.light-mode .skill {
+      background: rgba(0, 0, 0, 0.035);
+    }
+
+
     .skill strong {
       color: var(--white);
 
       font-weight: 500;
     }
+
 
     /* =========================================================
        SKILL LEVELS
@@ -1038,6 +1243,7 @@
       margin-top: 35px;
     }
 
+
     .level-card {
       padding: 20px;
 
@@ -1047,6 +1253,12 @@
 
       background: rgba(255, 255, 255, 0.025);
     }
+
+
+    body.light-mode .level-card {
+      background: rgba(0, 0, 0, 0.025);
+    }
+
 
     .level-card-label {
       font-family: "DM Mono", monospace;
@@ -1062,15 +1274,18 @@
       margin-bottom: 8px;
     }
 
+
     .level-card-value {
       color: var(--white);
 
       font-size: 13px;
     }
 
+
     .level-card-value span {
       color: var(--green);
     }
+
 
     /* =========================================================
        SOFT SKILLS
@@ -1084,6 +1299,7 @@
       gap: 20px;
     }
 
+
     .soft-card {
       padding: 30px;
 
@@ -1093,6 +1309,7 @@
 
       background: var(--panel);
     }
+
 
     .soft-card h3 {
       font-family: "Playfair Display", serif;
@@ -1104,6 +1321,7 @@
       margin-bottom: 18px;
     }
 
+
     .soft-tags {
       display: flex;
 
@@ -1111,6 +1329,7 @@
 
       gap: 8px;
     }
+
 
     .soft-tag {
       padding: 7px 11px;
@@ -1125,6 +1344,7 @@
 
       font-size: 11px;
     }
+
 
     /* =========================================================
        CONTACT
@@ -1152,6 +1372,7 @@
       text-align: center;
     }
 
+
     .contact-section::before {
       content: "QA";
 
@@ -1169,6 +1390,12 @@
       pointer-events: none;
     }
 
+
+    body.light-mode .contact-section::before {
+      color: rgba(0, 0, 0, 0.025);
+    }
+
+
     .contact-label {
       font-family: "DM Mono", monospace;
 
@@ -1183,6 +1410,7 @@
       margin-bottom: 18px;
     }
 
+
     .contact-title {
       font-family: "Playfair Display", serif;
 
@@ -1195,6 +1423,7 @@
       margin-bottom: 20px;
     }
 
+
     .contact-text {
       max-width: 650px;
 
@@ -1205,6 +1434,7 @@
       font-size: 14px;
     }
 
+
     .contact-links {
       display: flex;
 
@@ -1214,6 +1444,7 @@
 
       gap: 10px;
     }
+
 
     /* =========================================================
        FOOTER
@@ -1241,9 +1472,11 @@
       letter-spacing: 0.08em;
     }
 
+
     .footer-accent {
       color: var(--accent);
     }
+
 
     /* =========================================================
        REVEAL ANIMATION
@@ -1259,50 +1492,62 @@
         transform 0.8s ease;
     }
 
+
     .reveal.visible {
       opacity: 1;
 
       transform: translateY(0);
     }
 
+
     /* =========================================================
        RESPONSIVE
     ========================================================= */
 
     @media (max-width: 1000px) {
+
       .hero {
         grid-template-columns: 1fr;
 
         gap: 45px;
       }
 
+
       .hero-card {
         max-width: 450px;
       }
+
 
       .stats {
         grid-template-columns: repeat(2, 1fr);
       }
 
+
       .stat:nth-child(2) {
         border-right: none;
       }
 
+
       .stat:nth-child(-n + 2) {
         border-bottom: 1px solid var(--border);
       }
+
 
       .qa-intro,
       .skills-layout,
       .soft-grid {
         grid-template-columns: 1fr;
       }
+
     }
 
+
     @media (max-width: 760px) {
+
       .site {
         padding: 15px;
       }
+
 
       .topbar {
         top: 10px;
@@ -1312,9 +1557,11 @@
         padding: 12px 14px;
       }
 
+
       .topnav {
         display: none;
       }
+
 
       .hero {
         min-height: auto;
@@ -1324,17 +1571,21 @@
           70px;
       }
 
+
       .hero h1 {
         font-size: clamp(3.4rem, 17vw, 5.5rem);
       }
+
 
       .hero-description {
         font-size: 16px;
       }
 
+
       .stats {
         margin-bottom: 75px;
       }
+
 
       .section {
         padding:
@@ -1342,9 +1593,11 @@
           80px;
       }
 
+
       .section-header {
         margin-bottom: 35px;
       }
+
 
       .experience {
         grid-template-columns: 1fr;
@@ -1356,21 +1609,26 @@
         border-left: 1px solid var(--border);
       }
 
+
       .timeline::before {
         display: none;
       }
+
 
       .experience::before {
         left: -6px;
       }
 
+
       .experience-period {
         padding-left: 0;
       }
 
+
       .experience-main {
         padding-left: 0;
       }
+
 
       .experience-top {
         flex-direction: column;
@@ -1378,37 +1636,46 @@
         gap: 10px;
       }
 
+
       .experience-list {
         grid-template-columns: 1fr;
       }
+
 
       .formation-grid {
         grid-template-columns: 1fr;
       }
 
+
       .level-grid {
         grid-template-columns: 1fr;
       }
 
+
       .contact-section {
         padding: 55px 25px;
       }
+
 
       footer {
         flex-direction: column;
 
         text-align: center;
       }
+
     }
+
 
     /* =========================================================
        ACCESSIBILITY
     ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
+
       html {
         scroll-behavior: auto;
       }
+
 
       *,
       *::before,
@@ -1417,18 +1684,22 @@
 
         transition: none !important;
       }
+
     }
+
 
     /* =========================================================
        PRINT
-       ========================================================= */
+    ========================================================= */
 
     @media print {
+
       body {
         background: white;
 
         color: black;
       }
+
 
       .background-grid,
       .scroll-progress,
@@ -1437,22 +1708,26 @@
         display: none !important;
       }
 
+
       .site {
         max-width: none;
 
         padding: 0;
       }
 
+
       .hero,
       .section {
         padding: 25px;
       }
+
 
       .hero {
         min-height: auto;
 
         grid-template-columns: 1fr;
       }
+
 
       .hero h1,
       .section-title,
@@ -1462,12 +1737,14 @@
         color: #111;
       }
 
+
       .hero-description,
       .experience-description,
       .formation-detail,
       .section-subtitle {
         color: #444;
       }
+
 
       .hero-card,
       .qa-intro-card,
@@ -1482,23 +1759,32 @@
         box-shadow: none;
       }
 
+
       .reveal {
         opacity: 1 !important;
 
         transform: none !important;
       }
 
+
       .section {
         page-break-inside: avoid;
       }
+
     }
+
   </style>
 </head>
+
 
 <body>
 
   <!-- Progression du scroll -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+  <div
+    class="scroll-progress"
+    id="scrollProgress"
+  ></div>
+
 
   <!-- Grille décorative -->
   <div class="background-grid"></div>
@@ -1512,15 +1798,21 @@
 
     <header class="topbar">
 
-      <a href="#profil" class="brand">
+      <a
+        href="#profil"
+        class="brand"
+      >
 
         <div class="brand-mark">
           KS
         </div>
 
+
         <div class="brand-name">
-          KARIM 
-          <span class="brand-role">/ SABRI</span>
+          KARIM
+          <span class="brand-role">
+            / SABRI
+          </span>
         </div>
 
       </a>
@@ -1528,27 +1820,59 @@
 
       <nav class="topnav">
 
-        <a href="#profil" class="nav-link active">
+        <a
+          href="#profil"
+          class="nav-link active"
+        >
           Profil
         </a>
 
-        <a href="#experience" class="nav-link">
+
+        <a
+          href="#experience"
+          class="nav-link"
+        >
           Expériences
         </a>
 
-        <a href="#formation" class="nav-link">
+
+        <a
+          href="#formation"
+          class="nav-link"
+        >
           Formation
         </a>
 
-        <a href="#skills" class="nav-link">
+
+        <a
+          href="#skills"
+          class="nav-link"
+        >
           Compétences
         </a>
 
-        <a href="#contact" class="nav-link">
+
+        <a
+          href="#contact"
+          class="nav-link"
+        >
           Contact
         </a>
 
       </nav>
+
+
+      <!-- THEME TOGGLE -->
+
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Activer le mode clair"
+        title="Passer au mode clair"
+      >
+        ☀
+      </button>
 
     </header>
 
@@ -1567,7 +1891,7 @@
         <div class="hero-left">
 
           <div class="eyebrow">
-            Testeur logiciel 
+            Testeur logiciel
           </div>
 
 
@@ -1585,9 +1909,12 @@
               l'expertise technique, le diagnostic et le contrôle qualité
             </strong>
             chez Apple, j'oriente aujourd'hui cette expérience vers le
-            <strong>test logiciel et l'Assurance Qualité.</strong>
+            <strong>
+              test logiciel et l'Assurance Qualité.
+            </strong>
 
-            <br /><br />
+            <br />
+            <br />
 
             Mon approche repose sur un principe simple :
             <strong>
@@ -1642,23 +1969,29 @@
             class="profile-photo"
           />
 
+
           <div class="card-label">
             Positionnement
           </div>
+
 
           <h2>
             Testeur QA
           </h2>
 
+
           <p>
             Tests fonctionnels · Exploratoires · API · Automatisation
           </p>
 
+
           <br />
+
 
           <div class="card-label">
             Recherche
           </div>
+
 
           <p>
             CDI — Test logiciel / Assurance Qualité
@@ -1741,11 +2074,13 @@
             00
           </div>
 
+
           <div class="section-title-wrap">
 
             <h2 class="section-title">
               Mon approche QA
             </h2>
+
 
             <p class="section-subtitle">
               Une continuité entre diagnostic technique, contrôle qualité et test logiciel.
@@ -1764,9 +2099,11 @@
               01 / ANALYSER
             </div>
 
+
             <h3>
               Comprendre avant de tester
             </h3>
+
 
             <p>
               Identifier les fonctionnalités critiques, les parcours utilisateurs,
@@ -1783,9 +2120,11 @@
               02 / SÉCURISER
             </div>
 
+
             <h3>
               Tester avec une vision risque
             </h3>
+
 
             <p>
               Prioriser les scénarios selon leur impact métier et rechercher les
@@ -1801,9 +2140,11 @@
               03 / INVESTIGUER
             </div>
 
+
             <h3>
               Aller jusqu'à la cause
             </h3>
+
 
             <p>
               Reproduire, analyser les logs et les DevTools, isoler le comportement
@@ -1819,9 +2160,11 @@
               04 / AUTOMATISER
             </div>
 
+
             <h3>
               Transformer le test en filet de sécurité
             </h3>
+
 
             <p>
               Automatiser progressivement les scénarios critiques avec Playwright
@@ -1850,11 +2193,13 @@
             01
           </div>
 
+
           <div class="section-title-wrap">
 
             <h2 class="section-title">
               Expériences
             </h2>
+
 
             <p class="section-subtitle">
               Une trajectoire construite autour du diagnostic, de la qualité et de l'amélioration continue.
@@ -1888,11 +2233,13 @@
                     Testeur logiciel / QA
                   </h3>
 
+
                   <div class="experience-company">
                     HONEYGROUPE
                   </div>
 
                 </div>
+
 
                 <div class="experience-badge">
                   Stage de fin d'études
@@ -2008,11 +2355,13 @@
                     Testeur logiciel
                   </h3>
 
+
                   <div class="experience-company">
                     SKAZY
                   </div>
 
                 </div>
+
 
                 <div class="experience-badge">
                   Stage
@@ -2075,6 +2424,7 @@
                     Responsable Certification Apple
                     & Référent Processus
                   </h3>
+
 
                   <div class="experience-company">
                     Monaco Telecom
@@ -2175,6 +2525,7 @@
                     Cadre intégré « Genius »
                   </h3>
 
+
                   <div class="experience-company">
                     Apple Store — Marseille
                   </div>
@@ -2186,7 +2537,7 @@
 
               <p class="experience-description">
 
-                Expertise technique, conformité des processus, diagnostic, réparation 
+                Expertise technique, conformité des processus, diagnostic, réparation
                 hardware/software et contrôle qualité post-intervention.
 
               </p>
@@ -2270,6 +2621,7 @@
                     Technicien spécialiste certifié
                   </h3>
 
+
                   <div class="experience-company">
                     Apple Store — Nice
                   </div>
@@ -2329,6 +2681,7 @@
                     Commercial
                   </h3>
 
+
                   <div class="experience-company">
                     Apple Store — Nice
                   </div>
@@ -2386,6 +2739,7 @@
                   <h3 class="experience-role">
                     Designer & Photographe
                   </h3>
+
 
                   <div class="experience-company">
                     Freelance — en parallèle
@@ -2448,11 +2802,13 @@
             02
           </div>
 
+
           <div class="section-title-wrap">
 
             <h2 class="section-title">
               Formation
             </h2>
+
 
             <p class="section-subtitle">
               Une montée en compétence orientée qualité logicielle et automatisation.
@@ -2474,13 +2830,16 @@
               class="istqb-logo"
             />
 
+
             <div class="formation-date">
               05 / 2026
             </div>
 
+
             <h3 class="formation-name">
               Certification ISTQB
             </h3>
+
 
             <p class="formation-detail">
               Niveau Fondation
@@ -2495,9 +2854,11 @@
               02 / 2026 — 08 / 2026
             </div>
 
+
             <h3 class="formation-name">
               Testeur Logiciel / QA
             </h3>
+
 
             <p class="formation-detail">
               ENI École Informatique · Titre RNCP Niveau V — Bac+2
@@ -2512,9 +2873,11 @@
               2017 — 2025
             </div>
 
+
             <h3 class="formation-name">
               Certifications Techniques Apple
             </h3>
+
 
             <p class="formation-detail">
               Mac · iPhone · iPad · Watch · AirPods · HomePod · Apple TV
@@ -2530,9 +2893,11 @@
               07 / 2025 — 09 / 2025
             </div>
 
+
             <h3 class="formation-name">
               Certification d'État T3P
             </h3>
+
 
             <p class="formation-detail">
               Conducteur de Transport Public Particulier de Personnes
@@ -2547,9 +2912,11 @@
               01 / 2010 — 01 / 2011
             </div>
 
+
             <h3 class="formation-name">
               Anglais — Niveau 3/5
             </h3>
+
 
             <p class="formation-detail">
               Centre Américain de Langues · Fès, Maroc
@@ -2564,9 +2931,11 @@
               2008 — 2009
             </div>
 
+
             <h3 class="formation-name">
               Webmaster / Graphisme
             </h3>
+
 
             <p class="formation-detail">
               Communication visuelle · Institut MULTIHEXA
@@ -2581,9 +2950,11 @@
               2008 — 2009
             </div>
 
+
             <h3 class="formation-name">
               Informatique — Tronc commun
             </h3>
+
 
             <p class="formation-detail">
               Institut MULTIHEXA · Oujda, Maroc
@@ -2598,9 +2969,11 @@
               2005 — 2006
             </div>
 
+
             <h3 class="formation-name">
               Baccalauréat Technique
             </h3>
+
 
             <p class="formation-detail">
               Gestion Comptabilité · Lycée Technique · Oujda, Maroc
@@ -2628,11 +3001,13 @@
             03
           </div>
 
+
           <div class="section-title-wrap">
 
             <h2 class="section-title">
               Outils & Technologies
             </h2>
+
 
             <p class="section-subtitle">
               Un socle QA complété par une compréhension du développement web.
@@ -2653,6 +3028,7 @@
             <div class="skill-category-title">
               QA & Tests
             </div>
+
 
             <div class="skill-items">
 
@@ -2705,6 +3081,7 @@
               Web & Backend
             </div>
 
+
             <div class="skill-items">
 
               <div class="skill">
@@ -2752,6 +3129,7 @@
               Automatisation & CI/CD
             </div>
 
+
             <div class="skill-items">
 
               <div class="skill">
@@ -2791,6 +3169,7 @@
               Données & Développement
             </div>
 
+
             <div class="skill-items">
 
               <div class="skill">
@@ -2826,6 +3205,7 @@
               Maîtrise professionnelle
             </div>
 
+
             <div class="level-card-value">
               Tests fonctionnels · Diagnostic · Analyse d'anomalies
             </div>
@@ -2839,6 +3219,7 @@
               Pratique
             </div>
 
+
             <div class="level-card-value">
               API · Postman · Jira · Playwright · DevTools
             </div>
@@ -2851,6 +3232,7 @@
             <div class="level-card-label">
               En développement
             </div>
+
 
             <div class="level-card-value">
               Python · SQL · JavaScript · Automatisation
@@ -2875,11 +3257,13 @@
             04
           </div>
 
+
           <div class="section-title-wrap">
 
             <h2 class="section-title">
               Au-delà des outils
             </h2>
+
 
             <p class="section-subtitle">
               Les compétences humaines construites au contact des équipes et des utilisateurs.
@@ -2897,6 +3281,7 @@
             <h3>
               Soft skills
             </h3>
+
 
             <div class="soft-tags">
 
@@ -2938,6 +3323,7 @@
             <h3>
               Centres d'intérêt
             </h3>
+
 
             <div class="soft-tags">
 
@@ -3001,9 +3387,11 @@
             Une opportunité ?
           </div>
 
+
           <h2 class="contact-title">
             Parlons qualité.
           </h2>
+
 
           <p class="contact-text">
 
@@ -3063,12 +3451,15 @@
         </span>
       </div>
 
+
       <div>
         Val de Reuil · France
       </div>
 
+
       <div>
-        © <span id="year"></span>
+        ©
+        <span id="year"></span>
       </div>
 
     </footer>
@@ -3103,17 +3494,23 @@
       const scrollTop =
         window.scrollY;
 
+
       const documentHeight =
         document.documentElement.scrollHeight -
         window.innerHeight;
 
+
       if (documentHeight <= 0) {
+
         progressBar.style.width = "0%";
+
         return;
       }
 
+
       const progress =
         (scrollTop / documentHeight) * 100;
+
 
       progressBar.style.width =
         `${progress}%`;
@@ -3150,6 +3547,7 @@
                 "visible"
               );
 
+
               revealObserver.unobserve(
                 entry.target
               );
@@ -3179,6 +3577,7 @@
     const navLinks =
       document.querySelectorAll(".nav-link");
 
+
     const sections =
       document.querySelectorAll(
         "#profil, #experience, #formation, #skills, #contact"
@@ -3190,6 +3589,7 @@
       const scrollPosition =
         window.scrollY + 220;
 
+
       let currentSection =
         "profil";
 
@@ -3198,6 +3598,7 @@
 
         const top =
           section.offsetTop;
+
 
         const bottom =
           top + section.offsetHeight;
@@ -3231,7 +3632,8 @@
       navLinks.forEach((link) => {
 
         const target =
-          link.getAttribute("href")
+          link
+            .getAttribute("href")
             .replace("#", "");
 
 
@@ -3294,6 +3696,97 @@
       );
 
     });
+
+
+    /* =========================================================
+       DARK / LIGHT MODE
+    ========================================================= */
+
+    const themeToggle =
+      document.getElementById("themeToggle");
+
+
+    const savedTheme =
+      localStorage.getItem("theme");
+
+
+    /* Restaurer le thème enregistré */
+
+    if (savedTheme === "light") {
+
+      document.body.classList.add(
+        "light-mode"
+      );
+
+    }
+
+
+    /* Mettre à jour le bouton */
+
+    function updateThemeButton() {
+
+      const isLight =
+        document.body.classList.contains(
+          "light-mode"
+        );
+
+
+      themeToggle.textContent =
+        isLight ? "☾" : "☀";
+
+
+      themeToggle.setAttribute(
+        "aria-label",
+        isLight
+          ? "Activer le mode sombre"
+          : "Activer le mode clair"
+      );
+
+
+      themeToggle.setAttribute(
+        "title",
+        isLight
+          ? "Passer au mode sombre"
+          : "Passer au mode clair"
+      );
+
+    }
+
+
+    /* Changement de thème */
+
+    themeToggle.addEventListener(
+      "click",
+      () => {
+
+        document.body.classList.toggle(
+          "light-mode"
+        );
+
+
+        const isLight =
+          document.body.classList.contains(
+            "light-mode"
+          );
+
+
+        localStorage.setItem(
+          "theme",
+          isLight
+            ? "light"
+            : "dark"
+        );
+
+
+        updateThemeButton();
+
+      }
+    );
+
+
+    /* Initialisation */
+
+    updateThemeButton();
 
   </script>
 
