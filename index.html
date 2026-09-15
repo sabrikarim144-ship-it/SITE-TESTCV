@@ -60,6 +60,7 @@
 
     /* =========================================================
        LIGHT MODE VARIABLES
+       MODE CLAIR
     ========================================================= */
 
     body.light-mode {
@@ -1868,10 +1869,10 @@
         class="theme-toggle"
         id="themeToggle"
         type="button"
-        aria-label="Activer le mode clair"
-        title="Passer au mode clair"
+        aria-label="Activer le mode sombre"
+        title="Passer au mode sombre"
       >
-        ☀
+        ☾
       </button>
 
     </header>
@@ -2041,7 +2042,7 @@
           </div>
 
           <div class="stat-label">
-            Automatisation 
+            Automatisation
           </div>
 
         </div>
@@ -2167,7 +2168,7 @@
 
 
             <p>
-              Automatiser progressivement les scénarios critiques 
+              Automatiser progressivement les scénarios critiques
               et préparer leur intégration dans une chaîne CI/CD.
             </p>
 
@@ -3700,6 +3701,9 @@
 
     /* =========================================================
        DARK / LIGHT MODE
+       
+       IMPORTANT :
+       MODE CLAIR PAR DÉFAUT
     ========================================================= */
 
     const themeToggle =
@@ -3710,9 +3714,15 @@
       localStorage.getItem("theme");
 
 
-    /* Restaurer le thème enregistré */
+    /*
+      Si aucune préférence n'est enregistrée,
+      le mode clair est activé.
 
-    if (savedTheme === "light") {
+      Si l'utilisateur avait précédemment
+      choisi le mode sombre, on conserve le sombre.
+    */
+
+    if (savedTheme !== "dark") {
 
       document.body.classList.add(
         "light-mode"
@@ -3721,7 +3731,9 @@
     }
 
 
-    /* Mettre à jour le bouton */
+    /* =========================================================
+       MISE À JOUR DU BOUTON
+    ========================================================= */
 
     function updateThemeButton() {
 
@@ -3753,7 +3765,9 @@
     }
 
 
-    /* Changement de thème */
+    /* =========================================================
+       CHANGEMENT DE THÈME
+    ========================================================= */
 
     themeToggle.addEventListener(
       "click",
@@ -3784,7 +3798,9 @@
     );
 
 
-    /* Initialisation */
+    /* =========================================================
+       INITIALISATION DU THÈME
+    ========================================================= */
 
     updateThemeButton();
 
